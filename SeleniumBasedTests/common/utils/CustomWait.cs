@@ -35,7 +35,7 @@ namespace SeleniumBasedTests
             }
         }
 
-        public bool IsElementClicable(By by)
+        public bool IsElementClickable(By by)
         {
             WebDriverWait wait = CreateWebDriverWait();
             try
@@ -78,6 +78,19 @@ namespace SeleniumBasedTests
                 log.Error("Element should not be visible!", e);
                 return false;
             }
+        }
+
+        public void ClickElement(By by)
+        {
+            WebDriverWait wait = CreateWebDriverWait();
+            wait.Until((d) =>
+            {
+                if (IsElementClickable(by))
+                {
+                    webDriver.FindElement(by).Click();
+                }
+                return true;
+            });
         }
     }
 }
