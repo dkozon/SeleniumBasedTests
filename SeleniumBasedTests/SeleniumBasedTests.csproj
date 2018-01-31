@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -65,12 +68,18 @@
   <ItemGroup>
     <Compile Include="common\tests\BaseTest.cs" />
     <Compile Include="common\pageObjects\BasePage.cs" />
+    <Compile Include="common\utils\CustomWait.cs" />
     <Compile Include="common\utils\UrlProvider.cs" />
     <Compile Include="common\utils\PageObjectManager.cs" />
+    <Compile Include="google\pageObjects\LoginGooglePage.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="log4net.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -78,13 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="common\owasp\" />
-    <Folder Include="google\pageObjects\" />
     <Folder Include="google\tests\" />
     <Folder Include="internet\pageObjects\" />
     <Folder Include="internet\tests\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="common\utils\.gitignore" />
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

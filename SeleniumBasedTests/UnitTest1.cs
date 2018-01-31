@@ -13,11 +13,13 @@ namespace SeleniumBasedTests
             BasePage basePage = new BasePage(webDriver);
             basePage.LoadPage(UrlProvider.GetUrl(Url.THE_INTERNET));
         }
+
         [TearDown]
-        public void Endtest()
+        public void EndTest()
         {
             Close();
         }
+
         [Test]
         public void BlogTest()
         {

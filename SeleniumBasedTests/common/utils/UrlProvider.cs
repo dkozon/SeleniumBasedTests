@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SeleniumBasedTests
 {
     public class UrlProviderAttr : Attribute
@@ -18,7 +13,6 @@ namespace SeleniumBasedTests
 
     public static class UrlProvider
     {
-
         public static string GetUrl(this Url url)
         {
             UrlProviderAttr attr = GetAttr(url);
