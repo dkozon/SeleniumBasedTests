@@ -20,7 +20,7 @@ namespace SeleniumBasedTests
             return new WebDriverWait(webDriver, TimeSpan.FromSeconds(DEFAULT_TIMEOUT_IN_SEC));
         }
 
-        public bool IsElementPresent(By by)
+        public bool IsElementVisible(By by)
         {
             WebDriverWait wait = CreateWebDriverWait();
             try
@@ -46,6 +46,36 @@ namespace SeleniumBasedTests
             catch (WebDriverTimeoutException e)
             {
                 log.Error("Element not found!", e);
+                return false;
+            }
+        }
+
+        public bool IsElementPresent(By by)
+        {
+            WebDriverWait wait = CreateWebDriverWait();
+            try
+            {
+                wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(by));
+                return true;
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                log.Error("Element not found!", e);
+                return false;
+            }
+        }
+
+        public bool IsElementDisappear(By by)
+        {
+            WebDriverWait wait = CreateWebDriverWait();
+            try
+            {
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
+                return true;
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                log.Error("Element should not be visible!", e);
                 return false;
             }
         }
