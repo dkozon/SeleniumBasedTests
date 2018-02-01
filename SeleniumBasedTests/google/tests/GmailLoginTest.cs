@@ -38,9 +38,9 @@ namespace SeleniumBasedTests.google.tests
                     .SignInButtonClick();
             manager.LoginPage()
                     .EnterMailAddress("epam321")
-                    .AlternateClickNextButton();
-                    //.clickNextButton();
-            //TODO: assertion
+                    //.AlternateClickNextButton();
+                    .ClickNextButton();
+            Assert.Equals("epam321@gmail.com", manager.PasswordPage().GetEmailDisplayed());
             manager.PasswordPage()
                     .EnterPassword("testtest1")
                     .NextButtonClick();
