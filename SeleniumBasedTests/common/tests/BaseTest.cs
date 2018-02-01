@@ -4,7 +4,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Firefox;
 using System.Configuration;
 
-namespace SeleniumBasedTests
+namespace SeleniumBasedTests.common.tests
 {
     public class BaseTest
     {

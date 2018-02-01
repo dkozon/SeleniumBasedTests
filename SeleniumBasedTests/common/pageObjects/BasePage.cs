@@ -1,14 +1,17 @@
 ﻿using OpenQA.Selenium;
+using SeleniumBasedTests.common.utils;
 
-namespace SeleniumBasedTests
+namespace SeleniumBasedTests.common.pageObjects
 {
-    class BasePage
+    abstract class BasePage
     {
         public IWebDriver webDriver;
+        public CustomWait customWait;
 
         public BasePage(IWebDriver webDriver)
         {
             this.webDriver = webDriver;
+            customWait = new CustomWait(webDriver);
         }
 
         public string Title
@@ -20,5 +23,7 @@ namespace SeleniumBasedTests
         {
             webDriver.Url = url;
         }
+
+        public abstract bool IsLoaded();
     }
 }

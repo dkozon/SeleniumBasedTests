@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace SeleniumBasedTests
+namespace SeleniumBasedTests.common.utils
 {
     class CustomWait
     {
@@ -41,6 +41,21 @@ namespace SeleniumBasedTests
             try
             {
                 wait.Until(ExpectedConditions.ElementToBeClickable(by));
+                return true;
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                log.Error("Element not found!", e);
+                return false;
+            }
+        }
+
+        public bool IsElementClickable(IWebElement element)
+        {
+            WebDriverWait wait = CreateWebDriverWait();
+            try
+            {
+                wait.Until(ExpectedConditions.ElementToBeClickable(element));
                 return true;
             }
             catch (WebDriverTimeoutException e)
@@ -90,6 +105,59 @@ namespace SeleniumBasedTests
                     webDriver.FindElement(by).Click();
                 }
                 return true;
+            });
+        }
+
+        public void ClickElement(IWebElement element)
+        {
+            WebDriverWait wait = CreateWebDriverWait();
+            wait.Until((d) =>
+            {
+                if (IsElementClickable(element))
+                {
+                    element.Click();
+                }
+                return true;
+            });
+        }
+
+        public String GetElementText(By by, int timeoutInSeconds)
+        {
+            WebDriverWait wait = CreateWebDriverWait();
+            return wait.Until((d) =>
+            {
+                try
+                {
+                    if (IsElementVisible(by))
+                    {
+                        return webDriver.FindElement(by).GetAttribute("text");
+                    }
+                }
+                catch (NoSuchElementException e)
+                {
+                    log.Error("Element not found! Can't get element's text...", e);
+                }
+                return "";
+            });
+        }
+
+        public String GetElementAttribute(By by, String attributeName, int timeoutInSeconds)
+        {
+            WebDriverWait wait = CreateWebDriverWait();
+            return wait.Until((d) =>
+            {
+                try
+                {
+                    if(webDriver.FindElement(by).GetAttribute(attributeName) != null)
+                    {
+                        return webDriver.FindElement(by).GetAttribute(attributeName);
+                    }
+                }
+                catch (NoSuchElementException e)
+                {
+                    log.Error("Element not found! Can't get '" + attributeName + "'...", e);
+                }
+                return "";
             });
         }
     }

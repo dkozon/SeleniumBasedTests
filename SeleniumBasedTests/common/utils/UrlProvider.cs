@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-namespace SeleniumBasedTests
+namespace SeleniumBasedTests.common.utils
 {
     public class UrlProviderAttr : Attribute
     {
