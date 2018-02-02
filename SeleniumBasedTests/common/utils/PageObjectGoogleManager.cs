@@ -4,14 +4,14 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace SeleniumBasedTests.common.utils
 {
-    class PageObjectManager
+    class PageObjectGoogleManager
     {
         private readonly IWebDriver webDriver;
         private LoginGooglePage loginGooglePage;
         private MainGooglePage mainGooglePage;
         private PasswordGooglePage passwordGooglePage;
 
-        public PageObjectManager(IWebDriver webDriver)
+        public PageObjectGoogleManager(IWebDriver webDriver)
         {
             this.webDriver = webDriver;
         }

@@ -10,11 +10,11 @@ namespace SeleniumBasedTests.google.tests
     public class GmailLoginTest : BaseTest
     {
         private String url;
-        private PageObjectManager manager;
+        private PageObjectGoogleManager manager;
 
         public GmailLoginTest()
         {
-            manager = new PageObjectManager(webDriver);
+            manager = new PageObjectGoogleManager(webDriver);
         }
 
         [SetUp]

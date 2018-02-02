@@ -24,6 +24,12 @@ namespace SeleniumBasedTests.common.pageObjects
             webDriver.Url = url;
         }
 
+        public BasePage makeElementScaled(IWebElement uploadButton)
+        {
+            ((IJavaScriptExecutor)webDriver).ExecuteScript("arguments[0].style.transform='scale(1)';", uploadButton);
+            return this;
+        }
+
         public abstract bool IsLoaded();
     }
 }

@@ -70,11 +70,13 @@
     <Compile Include="common\pageObjects\BasePage.cs" />
     <Compile Include="common\utils\CustomWait.cs" />
     <Compile Include="common\utils\UrlProvider.cs" />
-    <Compile Include="common\utils\PageObjectManager.cs" />
+    <Compile Include="common\utils\PageObjectGoogleManager.cs" />
     <Compile Include="google\pageObjects\PasswordGooglePage.cs" />
     <Compile Include="google\pageObjects\MainGooglePage.cs" />
     <Compile Include="google\pageObjects\LoginGooglePage.cs" />
     <Compile Include="google\tests\GmailLoginTest.cs" />
+    <Compile Include="internet\pageObjects\FileUploadPage.cs" />
+    <Compile Include="internet\pageObjects\MainPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="common\owasp\" />
-    <Folder Include="internet\pageObjects\" />
     <Folder Include="internet\tests\" />
   </ItemGroup>
   <ItemGroup>
